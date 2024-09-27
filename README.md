@@ -1,66 +1,291 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Van Rental Application
 
-## About Laravel
+This is a Laravel application that integrates with Stripe, Google services, and mail configuration. Follow the steps below to get the application up and running.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Prerequisites
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Before you begin, ensure you have the following installed:
+- **PHP >= 8.0**
+- **Composer**
+- **MySQL** or any other database supported by Laravel
+- **Stripe account** for payment integration
+- **Google API credentials** for any Google services
+- **Mail service provider** (e.g., SMTP, Mailtrap, Mailgun)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Getting Started
 
-## Learning Laravel
+### 1. Clone the repository
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+git clone https://github.com/your-username/your-laravel-app.git
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 2. Change into the project directory
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+cd your-laravel-app
+```
 
-## Laravel Sponsors
+### 3. Copy `.env.example` to `.env`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+cp .env.example .env
+```
 
-### Premium Partners
+### 4. Set up environment configuration
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Open the `.env` file and update the necessary configuration details:
 
-## Contributing
+#### Database Configuration:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Stripe Configuration:
+```env
+STRIPE_API_KEY=your_stripe_api_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_DIRECT_PAY_LINK=your_stripe_payment_link
+```
 
-## Code of Conduct
+#### Google Configuration:
+```env
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_REDIRECT_URI=http://your-app-url.com/auth/google/callback
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Mail Configuration:
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_mail_username
+MAIL_PASSWORD=your_mail_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=hello@example.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
 
-## Security Vulnerabilities
+### 5. Install dependencies
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Run the following command to install all the necessary dependencies:
+
+```bash
+composer update
+```
+
+### 6. Generate the application key
+
+To set the application key in the `.env` file, run:
+
+```bash
+php artisan key:generate
+```
+
+### 7. Run migrations and seed the database
+
+Run the following Artisan commands to set up the database tables and seed them with data:
+
+```bash
+php artisan migrate --seed
+```
+
+### 7. Run Node Modules
+
+Run the following commands to compile your assets
+
+```bash
+npm install
+npm run dev (Compile for development)
+npm run build (Complile for production - Comment public/build from gitignore file if you are moving in production)
+```
+
+### 8. Serve the application
+
+Now, you can serve the application using:
+
+```bash
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`.
+
+---
+
+## Deployment Instructions
+
+Follow these instructions to deploy the Laravel application to a production server.
+
+### 1. Set up a production environment
+
+- Ensure you have **PHP**, **MySQL**, and a web server like **Nginx** or **Apache** set up on your server.
+- Install **Composer** on the server.
+
+### 2. Clone the repository
+
+On your production server, run:
+
+```bash
+git clone https://github.com/your-username/your-laravel-app.git
+```
+
+Change into the project directory:
+
+```bash
+cd your-laravel-app
+```
+
+### 3. Set up environment variables
+
+- Copy the `.env.example` to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+- Update the `.env` file with production values, including the database and third-party configurations (Stripe, Google, Mail).
+
+### 4. Install dependencies
+
+Run the following command to install Composer dependencies:
+
+```bash
+composer install --optimize-autoloader --no-dev
+```
+
+### 5. Generate the application key
+
+Run the following command to generate the application key for production:
+
+```bash
+php artisan key:generate
+```
+
+### 6. Migrate and seed the database
+
+Run the following command to migrate the database and seed any required data:
+
+```bash
+php artisan migrate --force --seed
+```
+
+### 7. Set file permissions
+
+Ensure that the `storage` and `bootstrap/cache` directories are writable by the web server:
+
+```bash
+sudo chown -R www-data:www-data storage
+sudo chown -R www-data:www-data bootstrap/cache
+```
+
+### 8. Set up a queue worker
+
+If you are using queues, make sure to start a queue worker using:
+
+```bash
+php artisan queue:work --daemon
+```
+
+You can also use a process supervisor like **Supervisor** to ensure that the queue worker stays running.
+
+### 9. Optimize the application for production
+
+Run the following commands to optimize the application:
+
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+### 10. Serve the application
+
+Configure your web server (Nginx or Apache) to serve the application. You may also use **Laravel Forge** or **Envoyer** for simplified deployment and server management.
+
+---
+
+## Environment Variables (`.env`)
+
+Here's the sample `.env.example` file:
+
+```plaintext
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailpit
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+PUSHER_APP_CLUSTER=mt1
+
+VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+VITE_PUSHER_HOST="${PUSHER_HOST}"
+VITE_PUSHER_PORT="${PUSHER_PORT}"
+VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
+VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REDIRECT_URI=
+
+STRIPE_API_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_DIRECT_PAY_LINK=
+```
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
