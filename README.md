@@ -8,6 +8,7 @@ This is a Laravel application that integrates with Stripe, Google services, and 
 Before you begin, ensure you have the following installed:
 - **PHP >= 8.0**
 - **Composer**
+- **Node**
 - **MySQL** or any other database supported by Laravel
 - **Stripe account** for payment integration
 - **Google API credentials** for any Google services
