@@ -1,0 +1,61 @@
+        /* Add animation for smooth height change */
+        .menu-toggle {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-in-out;
+        }
+
+        .menu-open {
+            max-height: 200px;
+            /* Adjust based on content */
+        }
+
+        .hero-pattern {
+            background-image: url("../frontend/images/heropattern2.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        /* Hides scrollbar */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            /* Internet Explorer 10+ */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        @media only screen and (max-width: 600px) {
+            .hero-pattern {
+                background-size: cover;
+            }
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper {
+            margin-left: auto;
+            margin-right: auto;
+        }
