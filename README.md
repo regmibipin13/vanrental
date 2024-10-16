@@ -19,13 +19,13 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-laravel-app.git
+git clone https://github.com/regmibipin13/vanrental.git vanrental
 ```
 
 ### 2. Change into the project directory
 
 ```bash
-cd your-laravel-app
+cd vanrental
 ```
 
 ### 3. Copy `.env.example` to `.env`
